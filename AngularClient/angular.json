@@ -28,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootsrap/scss/bootstrap.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -120,6 +120,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "AngularClient"
 }

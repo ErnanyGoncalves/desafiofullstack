@@ -1,0 +1,29 @@
+<form [formGroup]="stackForm" (ngSubmit)="stacksSearch()">
+    <div class="border border-secondary rounded p-3">
+        <div class="form-row">
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                <label for="inputScore">Score</label>
+                <input type="number" class="form-control" formControlName="score" id="inputScore">
+            </div>
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                <label for="inputSort">Sort</label>
+                <input type="text" class="form-control" formControlName="sort" id="inputSort">
+            </div>
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                <label for="inputLimit">Limit</label>
+                <input type="number" class="form-control" formControlName="limit" id="inputLimit">
+            </div>
+            <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                <label for="inputTag">Tag*</label>
+                <input type="text" class="form-control" formControlName="tag" id="inputTag">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col text-center">
+                <button [disabled]="!stackForm.valid" class="btn btn-success w-25">Search</button>
+                <span class="d-block" *ngIf="!stackForm.valid">'Tag' is a required field!</span>
+            </div>
+        </div>
+
+    </div>
+</form>
