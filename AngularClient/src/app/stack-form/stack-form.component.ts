@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GraphqlReqService } from '../graphql-req.service';
 
@@ -10,24 +10,21 @@ import { GraphqlReqService } from '../graphql-req.service';
 export class StackFormComponent implements OnInit {
 
   stackForm: FormGroup;
-
+  verdade = true;
   constructor(private graphqlReq: GraphqlReqService) { }
 
   ngOnInit() {
     this.stackForm = new FormGroup({
-      "score": new FormControl(20),
+      "score": new FormControl(100),
       "sort": new FormControl("activity"),
-      "limit": new FormControl(12),
+      "limit": new FormControl(10),
       "tag": new FormControl(null, Validators.required)
     });
   }
 
   stacksSearch() {
-    // const graphqlQuery = {
-    //   query: `mutation{searchStacks(stkSearch: {score: ${this.stackForm.value.score},sort: "${this.stackForm.value.sort}",limit: ${this.stackForm.value.limit},tag: "${this.stackForm.value.tag}"}){has_more}}`
-    // };
     const graphqlQuery = {
-      query: `mutation{searchStacks(stkSearch: {score: ${this.stackForm.value.score},sort: "${this.stackForm.value.sort}",limit: ${this.stackForm.value.limit},tag: "${this.stackForm.value.tag}"}){items{score title} has_more}}`
+      query: `mutation{searchStacks(stkSearch: {score: ${this.stackForm.value.score},sort: "${this.stackForm.value.sort}",limit: ${this.stackForm.value.limit},tag: "${this.stackForm.value.tag}"}){items{score title link} has_more}}`
     };
     console.log(JSON.stringify(graphqlQuery));
     this.graphqlReq.getStacks(JSON.stringify(graphqlQuery));
