@@ -1,3 +1,4 @@
 <div class="container mt-3">
-  <app-stack-form></app-stack-form>
+  <app-stack-form (stackList)="manageStacks($event)"></app-stack-form>
+  <app-stack-item [listOfStacks]="stacks"></app-stack-item>
 </div>

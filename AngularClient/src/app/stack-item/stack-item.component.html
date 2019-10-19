@@ -1,0 +1,40 @@
+<div *ngFor="let stack of listOfStacks">
+    <div class="card mt-3 mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-1 p-md-0 col-md-1 col-sm-4 text-center">
+                    <p>{{stack.score}}</p>
+                    <span>votes</span>
+                </div>
+                <div class="col-lg-1 p-md-0 col-md-1 col-sm-4 text-center">
+                    <p>{{stack.answer_count}}</p>
+                    <span>answers</span>
+                </div>
+                <div class="col-lg-1 p-md-0 col-md-1 col-sm-4 text-center">
+                    <p>{{stack.view_count}}</p>
+                    <span>views</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <a class="card-title h5" href="{{stack.link}}" target="_blank">{{stack.title}}</a>
+                    <div class="row">
+                        <div class="m-lg-3 m-md-2 m-sm-1" *ngFor="let tag of stack.tags">
+                            <a class="btn btn-primary" href="https://stackoverflow.com/questions/tagged/{{tag}}"
+                                role="button" target="_blank">{{tag}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0" *ngIf="stack.is_answered">Answered!</p>
+                </div>
+                <div class="col text-right">
+                    <span>Published by <a href="{{stack.owner.link}}"
+                            class="card-link">{{stack.owner.display_name}}</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

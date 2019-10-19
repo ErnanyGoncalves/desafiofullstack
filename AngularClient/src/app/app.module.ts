@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { StackFormComponent } from './stack-form/stack-form.component';
+import { StackItemComponent } from './stack-item/stack-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StackFormComponent
+    StackFormComponent,
+    StackItemComponent
   ],
   imports: [
     BrowserModule,

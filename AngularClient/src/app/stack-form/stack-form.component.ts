@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GraphqlReqService } from '../graphql-req.service';
 
@@ -10,7 +10,10 @@ import { GraphqlReqService } from '../graphql-req.service';
 export class StackFormComponent implements OnInit {
 
   stackForm: FormGroup;
-  verdade = true;
+  graphqlApiStacks:[];
+
+  @Output() stackList = new EventEmitter<any>();
+
   constructor(private graphqlReq: GraphqlReqService) { }
 
   ngOnInit() {
@@ -24,10 +27,14 @@ export class StackFormComponent implements OnInit {
 
   stacksSearch() {
     const graphqlQuery = {
-      query: `mutation{searchStacks(stkSearch: {score: ${this.stackForm.value.score},sort: "${this.stackForm.value.sort}",limit: ${this.stackForm.value.limit},tag: "${this.stackForm.value.tag}"}){items{score title link} has_more}}`
+      query: `mutation{searchStacks(stkSearch: {score: ${this.stackForm.value.score},sort: "${this.stackForm.value.sort}",limit: ${this.stackForm.value.limit},tag: "${this.stackForm.value.tag}"}){items{title tags link is_answered answer_count score view_count owner{display_name link}}}}`
     };
-    console.log(JSON.stringify(graphqlQuery));
-    this.graphqlReq.getStacks(JSON.stringify(graphqlQuery));
+
+    this.graphqlReq.getStacks(JSON.stringify(graphqlQuery)).subscribe((resp: any) => {
+      this.graphqlApiStacks = resp.body.data.searchStacks.items;
+
+      this.stackList.emit(this.graphqlApiStacks);
+    });
 
     this.stackForm.reset({ "score": 20, "sort": "activity", "limit": 10 });
   }

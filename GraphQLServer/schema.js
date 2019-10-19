@@ -7,7 +7,7 @@ module.exports = buildSchema(`
         user_type: String
         accept_rate: Int
         profile_image: String
-        display_image: String
+        display_name: String
         link: String
     }
 

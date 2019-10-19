@@ -14,7 +14,6 @@ module.exports = {
         const stacks = await fetch(url)
         .then(res => res.text())
         .then(data=>{
-            console.log(JSON.parse(data));
             return JSON.parse(data);
         }).catch(err=>console.log("Erro: ", err));
     
