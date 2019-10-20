@@ -7,9 +7,9 @@ module.exports = {
         const limit = args.stkSearch.limit;
         const tag = args.stkSearch.tag + ";javascript";
 
-        const minScoreParam = sort === 'votes' ? `min=${score}&` : '';
+        const minScore = sort === 'votes' ? `min=${score}&` : '';
 
-        const url = `https://api.stackexchange.com/2.2/questions?${minScoreParam}sort=${sort}&pagesize=${limit}&tagged=${tag}&site=stackoverflow&key=4qFzUgFO)svH8Y5rEGdYpA((`;
+        const url = `https://api.stackexchange.com/2.2/questions?${minScore}sort=${sort}&pagesize=${limit}&tagged=${tag}&site=stackoverflow&key=4qFzUgFO)svH8Y5rEGdYpA((`;
 
         const stacks = await fetch(url)
         .then(res => res.text())

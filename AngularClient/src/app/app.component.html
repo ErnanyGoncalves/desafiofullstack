@@ -1,4 +1,11 @@
 <div class="container mt-3">
+  <div class="mt-5 mb-5">
+    <img class="img-fluid mr-3" style="width: 10%;" src="../assets/js.png" alt="Javascript">
+    <h1 class="d-inline align-bottom">Javascript Questions from Stackoverflow</h1>
+  </div>
+  <div *ngIf="notFoundMessage" class="alert alert-danger">
+    No questions could be found. Try again.
+  </div>
   <app-stack-form (stackList)="manageStacks($event)"></app-stack-form>
   <app-stack-item [listOfStacks]="stacks"></app-stack-item>
 </div>

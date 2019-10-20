@@ -3,7 +3,8 @@
         <div class="form-row">
             <div class="form-group col-lg-3 col-md-6 col-sm-12">
                 <label for="inputScore">Score</label>
-                <input type="number" class="form-control" formControlName="score" id="inputScore">
+                <input *ngIf="stackForm.value.sort==='votes'" type="number" class="form-control" formControlName="score" id="inputScore">
+                <input *ngIf="stackForm.value.sort!=='votes'" type="number" class="form-control" placeholder="Only sorting by 'Votes'!" disabled>
             </div>
             <div class="form-group col-lg-3 col-md-6 col-sm-12">
                 <label for="inputSort">Sort</label>
@@ -18,8 +19,8 @@
             </div>
             <div class="form-group col-lg-3 col-md-6 col-sm-12">
                 <label for="inputLimit">Limit</label>
-                <input *ngIf="stackForm.value.sort==='votes'" type="number" class="form-control" formControlName="limit" id="inputLimit">
-                <input *ngIf="stackForm.value.sort!=='votes'" type="number" class="form-control" placeholder="Only sorting by 'Votes'!" disabled>
+                <input type="number" class="form-control" formControlName="limit" id="inputLimit">
+                
             </div>
             <div class="form-group col-lg-3 col-md-6 col-sm-12">
                 <label for="inputTag">Tag*</label>

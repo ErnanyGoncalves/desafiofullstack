@@ -7,10 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  stacks:[];
+  stacks: [] = [];
+  notFoundMessage: boolean = false;
 
-  manageStacks(stackList){
+  manageStacks(stackList) {
     this.stacks = stackList;
+    if (stackList == null) {
+      this.notFoundMessage = true;
+    } else if (this.stacks.length === 0) {
+      this.notFoundMessage = true;
+    } else {
+      this.notFoundMessage = false;
+    }
   }
 }
 

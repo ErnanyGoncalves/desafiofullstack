@@ -10,8 +10,8 @@ import { GraphqlReqService } from '../graphql-req.service';
 export class StackFormComponent implements OnInit {
 
   stackForm: FormGroup;
-  graphqlApiStacks:[];
-
+  graphqlApiStacks:[] = [];
+  
   @Output() stackList = new EventEmitter<any>();
 
   constructor(private graphqlReq: GraphqlReqService) { }
@@ -32,11 +32,10 @@ export class StackFormComponent implements OnInit {
 
     this.graphqlReq.getStacks(JSON.stringify(graphqlQuery)).subscribe((resp: any) => {
       this.graphqlApiStacks = resp.body.data.searchStacks.items;
-
       this.stackList.emit(this.graphqlApiStacks);
     });
 
-    this.stackForm.reset({ "score": 20, "sort": "activity", "limit": 10 });
+    this.stackForm.reset({ "score": 100, "sort": "activity", "limit": 10 });
   }
 
 }
